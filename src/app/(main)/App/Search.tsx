@@ -42,6 +42,7 @@ export const Search = () => {
           <li key={person.id}>
             <Link href={`/${person.id}`} className="flex">
               <img
+                alt={person.image}
                 src={person.image}
                 className="aspect-square h-10 rounded-full bg-base-200"
               />

@@ -52,7 +52,11 @@ export const Chats = async ({ session }: { session: Session }) => {
           const lastMessage = chat.messages[chat.messages.length - 1];
           return (
             <div key={chat.id} className="flex items-center space-x-3">
-              <img src={chat.person.image} className="aspect-square h-10" />
+              <img
+                alt={chat.person.name}
+                src={chat.person.image}
+                className="aspect-square h-10"
+              />
               <div>
                 <p>{chat.person.name}</p>
                 <p className="space-x-1 text-xs opacity-60">
