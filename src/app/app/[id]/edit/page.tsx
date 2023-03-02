@@ -10,7 +10,7 @@ export default async function Page({
   if (!person) return <div>No person</div>;
   return (
     <div className="col-span-3 flex  flex-col items-center justify-center space-y-3">
-      <p className="text-2xl">Create new person</p>
+      <p className="text-2xl">Edit Person</p>
       <Edit
         name={person.name}
         image={person.image}

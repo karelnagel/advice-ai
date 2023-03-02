@@ -1,6 +1,7 @@
 "use client";
 import { signOut } from "next-auth/react";
 import Link from "next/link";
+import { IoIosArrowForward } from "react-icons/io";
 import { UserImage } from "~/component/UserImage";
 
 export const Top = ({ image }: { image?: string | null }) => {
@@ -26,9 +27,11 @@ export const Top = ({ image }: { image?: string | null }) => {
           Messages
         </Link>
       </div>
-      <Link href="/app/new">
-        <NewIcon />
-      </Link>
+      <div>
+        <Link href="/app/new">
+          <NewIcon />
+        </Link>
+      </div>
     </div>
   );
 };

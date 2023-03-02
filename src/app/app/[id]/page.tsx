@@ -5,6 +5,7 @@ import { authOptions } from "~/server/auth";
 import { prisma } from "~/server/db";
 import { Delete } from "./Delete";
 import { Messages } from "./Messages";
+import { IoIosArrowBack } from "react-icons/io";
 
 export default async function Chat({
   params: { id },
@@ -28,6 +29,10 @@ export default async function Chat({
     <div className="col-span-3 flex flex-col space-x-3 p-3">
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-3">
+          <button className="block text-xl md:hidden">
+            <IoIosArrowBack />
+          </button>
+
           <UserImage image={person.image} />
           <p className=" text-lg ">{person.name}</p>
         </div>

@@ -23,8 +23,8 @@ export default async function Layout({ children }: { children: ReactNode }) {
     orderBy: { createdAt: "desc" },
   });
   return (
-    <div className="grid h-screen w-screen grid-cols-4">
-      <div className="space-y-3 border-r p-3">
+    <div className="grid h-screen w-screen grid-cols-3 md:grid-cols-4">
+      <div className="space-y-3 border-r p-3 hidden md:block">
         <Top image={session.user.image} />
           <Search />
         <div className="space-y-3">
