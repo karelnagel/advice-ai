@@ -11,11 +11,17 @@ import { prisma } from "~/server/db";
 import type { ParsedEvent, ReconnectInterval } from "eventsource-parser";
 import { createParser } from "eventsource-parser";
 import type { Message } from "~/types";
+import { getSession } from "next-auth/react";
 
-export const POST = async (req: NextRequest) => {
-  const { message, personId } = (await req.json()) as {
+// export const runtime = "experimental-edge";
+
+export const POST = async (
+  req: NextRequest,
+  ctx: { params: { id: string } }
+) => {
+  const personId = ctx.params.id;
+  const { message } = (await req.json()) as {
     message: string;
-    personId: string;
   };
   const session = await getServerSession(authOptions);
   if (!session) return NextResponse.error();
