@@ -9,5 +9,5 @@ export const Delete = ({ id }: { id: string }) => {
     await axios.delete(`/app/${id}/delete`, { params: { id } });
     router.push(`/app`);
   };
-  return <button onClick={() => void del()}>Delete</button>;
+  return <button onClick={() => void del()}>Restart</button>;
 };

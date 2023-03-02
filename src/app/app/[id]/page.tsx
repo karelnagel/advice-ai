@@ -1,4 +1,5 @@
 import { getServerSession } from "next-auth";
+import Link from "next/link";
 import { UserImage } from "~/component/UserImage";
 import { authOptions } from "~/server/auth";
 import { prisma } from "~/server/db";
@@ -30,7 +31,12 @@ export default async function Chat({
           <UserImage image={person.image} />
           <p className=" text-lg ">{person.name}</p>
         </div>
-        <Delete id={id} />
+        <div className="space-x-2">
+          {person.creatorId === session.user.id && (
+            <Link href={`/app/${id}/edit`}>Edit</Link>
+          )}
+          <Delete id={id} />
+        </div>
       </div>
       <Messages
         messages={
