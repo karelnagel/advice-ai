@@ -16,7 +16,7 @@ export default async function Layout({
   return (
     <html lang="en">
       <SessionProvider session={session}>
-        <body className="h-full w-screen" style={inter.style}>
+        <body className="h-screen w-screen" style={inter.style}>
           {children}
         </body>
       </SessionProvider>

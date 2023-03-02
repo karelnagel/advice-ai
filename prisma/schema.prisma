@@ -55,6 +55,7 @@ model User {
     image         String?
     accounts      Account[]
     sessions      Session[]
+    chats         Chat[]
 }
 
 model VerificationToken {
@@ -63,4 +64,42 @@ model VerificationToken {
     expires    DateTime
 
     @@unique([identifier, token])
+}
+
+model Person {
+    id        String   @id @default(cuid())
+    name      String
+    image     String   @unique
+    prompt    String
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+    chats     Chat[]
+}
+
+enum Role {
+    user
+    assistant
+    system
+}
+
+model Message {
+    id        String   @id @default(cuid())
+    content   String
+    role      Role
+    createdAt DateTime @default(now())
+    chat      Chat     @relation(fields: [chatId], references: [id])
+    chatId    String
+}
+
+model Chat {
+    id        String    @id @default(cuid())
+    createdAt DateTime  @default(now())
+    updatedAt DateTime  @updatedAt
+    person    Person    @relation(fields: [personId], references: [id])
+    personId  String
+    user      User      @relation(fields: [userId], references: [id])
+    userId    String
+    messages  Message[]
+
+    @@unique([personId, userId])
 }
