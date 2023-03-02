@@ -1,9 +1,7 @@
-import type { Session } from "next-auth";
-
-export const App = ({ session }: { session: Session }) => {
+export default function New() {
   return (
     <div className="grid h-screen w-screen grid-cols-4">
       <p>Start new conversation</p>
     </div>
   );
-};
+}
