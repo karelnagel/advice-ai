@@ -47,15 +47,19 @@ export const Chats = async ({ session }: { session: Session }) => {
       <div className="">
         <Search />
       </div>
-      <div>
+      <div className="space-y-2">
         {chats.map((chat) => {
           const lastMessage = chat.messages[chat.messages.length - 1];
           return (
-            <div key={chat.id} className="flex items-center space-x-3">
+            <Link
+              href={`/${chat.person.id}`}
+              key={chat.id}
+              className="flex items-center space-x-3"
+            >
               <img
                 alt={chat.person.name}
                 src={chat.person.image}
-                className="aspect-square h-10"
+                className="aspect-square h-10 rounded-full"
               />
               <div>
                 <p>{chat.person.name}</p>
@@ -67,7 +71,7 @@ export const Chats = async ({ session }: { session: Session }) => {
                   </span>
                 </p>
               </div>
-            </div>
+            </Link>
           );
         })}
       </div>

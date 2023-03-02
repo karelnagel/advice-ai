@@ -1,6 +1,7 @@
 import { getServerSession } from "next-auth";
 import { authOptions } from "~/server/auth";
 import { prisma } from "~/server/db";
+import { Delete } from "./Delete";
 import { Messages } from "./Messages";
 
 export default async function Chat({
@@ -28,12 +29,21 @@ export default async function Chat({
           <img
             alt={person.name}
             src={person.image}
-            className="aspect-square h-10"
+            className="aspect-square h-10 rounded-full"
           />
           <p className=" text-lg ">{person.name}</p>
         </div>
+        <Delete id={id} />
       </div>
-      <Messages messages={person.chats[0]?.messages || []} person={person} />
+      <Messages
+        messages={
+          person.chats[0]?.messages.map((m) => ({
+            content: m.content,
+            role: m.role,
+          })) || []
+        }
+        person={{ id: person.id, image: person.image, name: person.name }}
+      />
     </div>
   );
 }

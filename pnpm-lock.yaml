@@ -15,6 +15,7 @@ specifiers:
   daisyui: ^2.51.3
   eslint: ^8.35.0
   eslint-config-next: ^13.2.3
+  eventsource-parser: ^0.1.0
   next: ^13.2.3
   next-auth: ^4.20.0
   postcss: ^8.4.21
@@ -34,6 +35,7 @@ dependencies:
   '@prisma/client': 4.11.0_prisma@4.11.0
   axios: 1.3.4
   daisyui: 2.51.3_gbtt6ss3tbiz4yjtvdr6fbrj44
+  eventsource-parser: 0.1.0
   next: 13.2.3_biqbaboplfbrettd7655fr4n2y
   next-auth: 4.20.0_nvzgbose6yf6w7ijjprgspqefi
   react: 18.2.0
@@ -1374,6 +1376,11 @@ packages:
     resolution: {integrity: sha512-kVscqXk4OCp68SZ0dkgEKVi6/8ij300KBWTJq32P/dYeWTSwK41WyTxalN1eRmA5Z9UU/LX9D7FWSmV9SAYx6g==}
     engines: {node: '>=0.10.0'}
     dev: true
+
+  /eventsource-parser/0.1.0:
+    resolution: {integrity: sha512-M9QjFtEIkwytUarnx113HGmgtk52LSn3jNAtnWKi3V+b9rqSfQeVdLsaD5AG/O4IrGQwmAAHBIsqbmURPTd2rA==}
+    engines: {node: '>=14.18'}
+    dev: false
 
   /expand-template/2.0.3:
     resolution: {integrity: sha512-XYfuKMvj4O35f/pOXLObndIRvyQ+/+6AhODh+OKWj9S9498pHHn/IMszH+gt0fBCRWMNfk1ZSp5x3AifmnI2vg==}
