@@ -1,19 +1,22 @@
 "use client";
 
-import type { Chat, Message, Person } from "@prisma/client";
+import type { Message, Person } from "@prisma/client";
 import type { FormEventHandler } from "react";
 import { useState } from "react";
 
 export const Messages = ({
-  chat,
+  messages: startMessages,
+  person,
 }: {
-  chat: Chat & { messages: Message[]; person: Person };
+  messages: Message[];
+  person: Person;
 }) => {
-  const [messages, setMessages] = useState(chat.messages);
+  const [messages, setMessages] = useState(startMessages);
   const [input, setInput] = useState("");
   const submit: FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
     if (!input) return;
+  
   };
   return (
     <>
@@ -30,13 +33,15 @@ export const Messages = ({
                   <img
                     alt="sender"
                     className="w-10 rounded-full"
-                    src={chat.person.image}
+                    src={person.image}
                   />
                 </div>
               )}
               <div className="chat-header">
-                {isUser ? "You" : chat.person.name}
-                <time className="text-xs opacity-50">12:45</time>
+                {isUser ? "You" : person.name}
+                <time className="text-xs opacity-50">
+                  {message.createdAt.getHours()}
+                </time>
               </div>
               <div
                 className={`chat-bubble ${isUser ? "chat-bubble-primary" : ""}`}
