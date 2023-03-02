@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import type { FormEvent } from "react";
 import { useState } from "react";
 import type { Message } from "~/types";
@@ -18,6 +19,7 @@ export const Messages = ({
   const [messages, setMessages] = useState(startMessages);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
   const submit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!input || loading) return;
@@ -33,6 +35,7 @@ export const Messages = ({
         role: "user",
       },
     ]);
+    router.refresh();
     setInput("");
     try {
       const res = await fetch(`/app/${person.id}/message`, {
@@ -70,6 +73,7 @@ export const Messages = ({
     } catch (e) {
       console.log(e);
     }
+    router.refresh();
     setLoading(false);
   };
   return (
