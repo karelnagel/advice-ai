@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import type { FormEvent } from "react";
 import { useState } from "react";
+import { UserImage } from "~/component/UserImage";
 import type { Message } from "~/types";
 type Person = {
   name: string;
@@ -100,11 +101,7 @@ export const Messages = ({
               >
                 {!isUser && (
                   <div className="chat-image avatar aspect-square h-10">
-                    <img
-                      alt="sender"
-                      className="rounded-full"
-                      src={person.image}
-                    />
+                    <UserImage image={person.image} />
                   </div>
                 )}
                 <div className="chat-header">

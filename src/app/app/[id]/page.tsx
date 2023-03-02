@@ -1,4 +1,5 @@
 import { getServerSession } from "next-auth";
+import { UserImage } from "~/component/UserImage";
 import { authOptions } from "~/server/auth";
 import { prisma } from "~/server/db";
 import { Delete } from "./Delete";
@@ -26,11 +27,7 @@ export default async function Chat({
     <div className="col-span-3 flex flex-col space-x-3 p-3">
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-3">
-          <img
-            alt={person.name}
-            src={person.image}
-            className="aspect-square h-10 rounded-full"
-          />
+          <UserImage image={person.image} />
           <p className=" text-lg ">{person.name}</p>
         </div>
         <Delete id={id} />

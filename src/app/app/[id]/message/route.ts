@@ -11,7 +11,6 @@ import { prisma } from "~/server/db";
 import type { ParsedEvent, ReconnectInterval } from "eventsource-parser";
 import { createParser } from "eventsource-parser";
 import type { Message } from "~/types";
-import { getSession } from "next-auth/react";
 
 // export const runtime = "experimental-edge";
 

@@ -2,6 +2,7 @@ import { getServerSession } from "next-auth";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import type { ReactNode } from "react";
+import { UserImage } from "~/component/UserImage";
 import { authOptions } from "~/server/auth";
 import { prisma } from "~/server/db";
 import { Search } from "./Search";
@@ -25,11 +26,7 @@ export default async function Layout({ children }: { children: ReactNode }) {
       <div className="space-y-3 border-r p-3">
         <div className="flex items-center justify-between ">
           <div className="flex items-center space-x-3 ">
-            <img
-              src={session.user.image || "/google.png"}
-              alt="avatar"
-              className=" aspect-square h-10 rounded-full"
-            />
+            <UserImage image={session.user.image} />
             <p className="text-lg font-semibold">Messages</p>
           </div>
           <Link href="/app/new">
@@ -49,11 +46,7 @@ export default async function Layout({ children }: { children: ReactNode }) {
                 key={chat.id}
                 className="flex items-center space-x-3"
               >
-                <img
-                  alt={chat.person.name}
-                  src={chat.person.image}
-                  className="aspect-square h-10 shrink-0 rounded-full"
-                />
+                <UserImage image={chat.person.image} />
                 <div>
                   <p>{chat.person.name}</p>
                   <div className="flex space-x-1 text-xs opacity-60">
