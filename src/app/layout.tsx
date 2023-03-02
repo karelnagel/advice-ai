@@ -10,8 +10,10 @@ export default async function Layout({
   const session = await getServerSession();
 
   return (
-    <SessionProvider session={session}>
-      <div> {children}</div>
-    </SessionProvider>
+    <html lang="en">
+      <SessionProvider session={session}>
+        <body> {children}</body>
+      </SessionProvider>
+    </html>
   );
 }
