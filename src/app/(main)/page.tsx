@@ -5,7 +5,6 @@ import { Landing } from "./Landing";
 
 export default async function Page() {
   const session = await getServerSession(authOptions);
-  if (session) return <App />;
+  if (session) return <App session={session} />;
   else return <Landing />;
-  
 }
