@@ -13,7 +13,12 @@ export async function POST(req: NextRequest) {
   const session = await getServerSession(authOptions);
   if (!session) return { status: 401 };
   const person = await prisma.person.create({
-    data: { name, image, prompt },
+    data: {
+      name,
+      image,
+      prompt,
+      creator: { connect: { id: session.user.id } },
+    },
   });
   return NextResponse.json(person);
 }

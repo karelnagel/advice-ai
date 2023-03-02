@@ -1,6 +1,7 @@
 import type { Session } from "next-auth";
 import Link from "next/link";
 import { prisma } from "~/server/db";
+import { Search } from "./Search";
 
 const NewIcon = () => {
   return (
@@ -44,7 +45,7 @@ export const Chats = async ({ session }: { session: Session }) => {
         </Link>
       </div>
       <div className="">
-        <input type="text" placeholder="Search people" className="input" />
+        <Search />
       </div>
       <div>
         {chats.map((chat) => {
