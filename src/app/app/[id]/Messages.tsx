@@ -8,6 +8,7 @@ type Person = {
   name: string;
   image: string;
   id: string;
+  prompt: string;
 };
 export const Messages = ({
   messages: startMessages,
@@ -78,7 +79,17 @@ export const Messages = ({
   };
   return (
     <>
-      <div className="relative my-3 flex h-full flex-col-reverse overflow-scroll">
+      <div className="relative my-3 h-full overflow-scroll">
+        {!messages.length && (
+          <div className="flex h-full items-center justify-center">
+            <div className=" flex flex-col items-center space-y-3">
+              <p>Prompt</p>
+              <p className="max-w-lg rounded-lg bg-base-300 p-3">
+                {person.prompt}
+              </p>
+            </div>
+          </div>
+        )}
         <div className="absolute bottom-0 flex h-full w-full flex-col overflow-scroll ">
           {messages.map((message, i) => {
             const isUser = message.role === "user";

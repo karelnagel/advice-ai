@@ -40,7 +40,7 @@ export const Search = () => {
       >
         {people?.map((person) => (
           <li key={person.id}>
-            <Link href={`/${person.id}`} className="flex">
+            <Link href={`/app/${person.id}`} className="flex">
               <img
                 alt={person.image}
                 src={person.image}

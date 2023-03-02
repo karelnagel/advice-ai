@@ -42,7 +42,12 @@ export default async function Chat({
             role: m.role,
           })) || []
         }
-        person={{ id: person.id, image: person.image, name: person.name }}
+        person={{
+          id: person.id,
+          image: person.image,
+          name: person.name,
+          prompt: person.prompt,
+        }}
       />
     </div>
   );
