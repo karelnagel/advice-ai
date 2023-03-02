@@ -11,7 +11,7 @@ export const Search = () => {
   useEffect(() => {
     const search = async () => {
       if (!input) return;
-      const res = await axios.get<Person[]>("/search", {
+      const res = await axios.get<Person[]>("/app/search", {
         params: { search: input },
       });
       setPeople(res.data);

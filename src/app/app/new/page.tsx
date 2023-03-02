@@ -11,14 +11,14 @@ export default function New() {
   const submit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!name || !image || !prompt) return;
-    const res = await axios.post("/new/add", {
+    const res = await axios.post("/app/new/add", {
       name,
       image,
       prompt,
     });
     const person = res.data as Person;
 
-    router.push(`/${person.id}`);
+    router.push(`/app/${person.id}`);
   };
   const [name, setName] = useState("");
   const [image, setImage] = useState("");

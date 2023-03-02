@@ -5,7 +5,7 @@ import { authOptions } from "~/server/auth";
 import { prisma } from "~/server/db";
 
 export const DELETE = async (req: NextRequest) => {
-  const id = req.nextUrl.pathname.split("/").filter((x) => x)[0];
+  const id = req.nextUrl.searchParams.get("id");
   console.log(req.nextUrl.pathname, id);
   const session = await getServerSession(authOptions);
   console.log(session?.user.id, id);

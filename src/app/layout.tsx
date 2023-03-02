@@ -3,7 +3,6 @@ import "./globals.css";
 import SessionProvider from "./SessionProvider";
 import { Inter } from "next/font/google";
 import { authOptions } from "~/server/auth";
-import { Chats } from "./(main)/app/Chats";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,15 +17,7 @@ export default async function Layout({
     <html lang="en">
       <SessionProvider session={session}>
         <body className="h-screen w-screen" style={inter.style}>
-          {session ? (
-            <div className="grid h-screen w-screen grid-cols-4">
-              {/* @ts-expect-error Server Component */}
-              <Chats session={session} />
-              {children}
-            </div>
-          ) : (
-            children
-          )}
+          {children}
         </body>
       </SessionProvider>
     </html>

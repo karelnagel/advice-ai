@@ -40,7 +40,7 @@ export const Chats = async ({ session }: { session: Session }) => {
           />
           <p className="text-lg font-semibold">Messages</p>
         </div>
-        <Link href="/new">
+        <Link href="/app/new">
           <NewIcon />
         </Link>
       </div>
@@ -52,7 +52,7 @@ export const Chats = async ({ session }: { session: Session }) => {
           const lastMessage = chat.messages[chat.messages.length - 1];
           return (
             <Link
-              href={`/${chat.person.id}`}
+              href={`/app/${chat.person.id}`}
               key={chat.id}
               className="flex items-center space-x-3"
             >

@@ -35,7 +35,7 @@ export const Messages = ({
     ]);
     setInput("");
     try {
-      const res = await fetch(`/${person.id}/message`, {
+      const res = await fetch(`/app/${person.id}/message`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
