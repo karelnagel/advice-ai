@@ -27,7 +27,9 @@ export default async function Layout({ children }: { children: ReactNode }) {
         <div className="flex items-center justify-between ">
           <div className="flex items-center space-x-3 ">
             <UserImage image={session.user.image} />
-            <p className="text-lg font-semibold">Messages</p>
+            <Link href="/app" className="text-lg font-semibold">
+              Messages
+            </Link>
           </div>
           <Link href="/app/new">
             <NewIcon />

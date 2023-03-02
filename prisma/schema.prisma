@@ -66,6 +66,7 @@ model Person {
     name      String
     image     String
     prompt    String
+    featured  Boolean  @default(false)
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
     creator   User     @relation(fields: [creatorId], references: [id])

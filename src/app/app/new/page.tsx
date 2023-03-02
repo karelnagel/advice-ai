@@ -24,8 +24,8 @@ export default function New() {
   const [image, setImage] = useState("");
   const [prompt, setPrompt] = useState("");
   return (
-    <div className="col-span-3 flex  flex-col items-center justify-center">
-      <p className="text-lg">Create new person</p>
+    <div className="col-span-3 flex  flex-col items-center justify-center space-y-3">
+      <p className="text-2xl">Create new person</p>
       <form
         action=""
         className="flex w-96 flex-col  space-y-2"
