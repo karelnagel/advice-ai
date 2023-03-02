@@ -39,7 +39,7 @@ export const Chats = async ({ session }: { session: Session }) => {
           />
           <p className="text-lg font-semibold">Messages</p>
         </div>
-        <Link href="/">
+        <Link href="/new">
           <NewIcon />
         </Link>
       </div>

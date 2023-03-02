@@ -2,9 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-.btn{
- @apply normal-case font-medium;
+.btn {
+  @apply font-medium normal-case;
 }
-.input{
-    @apply w-full p-2 min-h-0 h-auto bg-base-200 rounded-full text-sm;
+.input {
+  @apply h-auto min-h-0 w-full  bg-base-200 p-2 text-sm;
 }
