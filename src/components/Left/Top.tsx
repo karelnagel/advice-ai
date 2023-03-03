@@ -1,9 +1,11 @@
 "use client";
-import { signOut } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 import { UserImage } from "~/components/UserImage";
 
-export const Top = ({ image }: { image?: string | null }) => {
+export const Top = () => {
+  const { data: session } = useSession();
+  const image = session?.user?.image;
   return (
     <div className="flex items-center justify-between ">
       <div className="flex items-center space-x-3 ">
@@ -22,7 +24,7 @@ export const Top = ({ image }: { image?: string | null }) => {
             </li>
           </ul>
         </div>
-        <Link href="/chat" className="text-lg font-semibold">
+        <Link href="/chat/start" className="text-lg font-semibold">
           Messages
         </Link>
       </div>

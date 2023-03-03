@@ -1,4 +1,5 @@
 import { prisma } from "~/server/db";
+import { Person } from "~/types";
 import { Edit } from "./Edit";
 
 export default async function Page({
@@ -11,12 +12,7 @@ export default async function Page({
   return (
     <div className="col-span-3 flex  flex-col items-center justify-center space-y-3">
       <p className="text-2xl">Edit Person</p>
-      <Edit
-        name={person.name}
-        image={person.image}
-        prompt={person.prompt}
-        id={id}
-      />
+      <Edit {...Person.parse(person)} />
     </div>
   );
 }

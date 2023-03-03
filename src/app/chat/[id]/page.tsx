@@ -6,6 +6,7 @@ import { prisma } from "~/server/db";
 import { Delete } from "./Delete";
 import { Messages } from "./Messages";
 import { IoIosArrowBack } from "react-icons/io";
+import { Message, Person } from "~/types";
 
 export default async function Chat({
   params: { id },
@@ -29,9 +30,9 @@ export default async function Chat({
     <div className="col-span-3 flex flex-col space-x-3 p-3">
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-3">
-          <button className="block text-xl md:hidden">
+          <Link href="/chat" className="block text-xl md:hidden">
             <IoIosArrowBack />
-          </button>
+          </Link>
 
           <UserImage image={person.image} />
           <p className=" text-lg ">{person.name}</p>
@@ -40,22 +41,12 @@ export default async function Chat({
           {person.creatorId === session.user.id && (
             <Link href={`/chat/${id}/edit`}>Edit</Link>
           )}
-          <Delete id={id} />
+          {person.chats[0] && <Delete id={id} />}
         </div>
       </div>
       <Messages
-        messages={
-          person.chats[0]?.messages.map((m) => ({
-            content: m.content,
-            role: m.role,
-          })) || []
-        }
-        person={{
-          id: person.id,
-          image: person.image,
-          name: person.name,
-          prompt: person.prompt,
-        }}
+        messages={Message.array().parse(person.chats[0]?.messages || [])}
+        person={Person.parse(person)}
       />
     </div>
   );

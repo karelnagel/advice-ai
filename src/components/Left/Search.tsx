@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { trpc } from "../../ClientProvider";
+import { trpc } from "../../app/ClientProvider";
 
 export const Search = () => {
   const [input, setInput] = useState("");
