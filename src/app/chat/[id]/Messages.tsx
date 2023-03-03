@@ -104,7 +104,7 @@ export const Messages = ({
                 className={`chat ${isUser ? "chat-end" : "chat-start"}`}
               >
                 {!isUser && (
-                  <div className="chat-image avatar aspect-square h-10">
+                  <div className="chat-image avatar aspect-square h-8 md:h-10">
                     <UserImage image={person.image} />
                   </div>
                 )}

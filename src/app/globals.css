@@ -8,3 +8,10 @@
 .input {
   @apply h-auto min-h-0 w-full  bg-base-200 p-2 text-sm;
 }
+@media screen and (-webkit-min-device-pixel-ratio:0) { 
+  select,
+  textarea,
+  input {
+    font-size: 16px;
+  }
+}

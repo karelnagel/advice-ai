@@ -28,3 +28,7 @@ export default async function Layout({
     </html>
   );
 }
+export const metadata={
+  title:"Chat GPT",
+  viewport: "width=device-width, initial-scale=1, maximum-scale=1",
+}
