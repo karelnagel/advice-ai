@@ -19,7 +19,9 @@ export const Left = ({ chats }: { chats: Chat[] }) => {
       <Search />
       <div className="space-y-3">
         {chats.map((chat) => {
-          const lastMessage = chat.messages[0];
+          if (!chat.person) return null;
+
+          const lastMessage = chat.messages?.[0];
           //   const minAgo = minutesPassed(lastMessage?.createdAt);
           return (
             <Link
