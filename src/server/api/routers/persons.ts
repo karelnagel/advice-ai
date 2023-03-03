@@ -9,8 +9,8 @@ import { prisma } from "~/server/db";
 
 const Person = z.object({
   name: z.string(),
-  prompt: z.string().optional(),
-  image: z.string().optional(),
+  prompt: z.string(),
+  image: z.string(),
   id: z.string(),
 });
 export const persons = createTRPCRouter({
@@ -31,7 +31,11 @@ export const persons = createTRPCRouter({
     }),
   new: protectedProcedure
     .input(
-      z.object({ name: z.string(), image: z.string(), prompt: z.string() })
+      z.object({
+        name: z.string(),
+        image: z.string(),
+        prompt: z.string(),
+      })
     )
     .output(Person)
     .mutation(async ({ input, ctx }) => {

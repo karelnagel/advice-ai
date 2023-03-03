@@ -1,7 +1,7 @@
-/* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
+
 import { getServerSession } from "next-auth";
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
@@ -11,6 +11,7 @@ import { prisma } from "~/server/db";
 import type { ParsedEvent, ReconnectInterval } from "eventsource-parser";
 import { createParser } from "eventsource-parser";
 import type { Message } from "~/types";
+import { defaultPrompt } from "~/config";
 
 // export const runtime = "experimental-edge";
 
@@ -54,11 +55,15 @@ export const POST = async (
       person: true,
     },
   });
-  chat?.messages.reverse();
+  if (!chat) return NextResponse.error();
+
+  chat.messages.reverse();
   const messages: Message[] = [
-    { role: "system", content: chat?.person.prompt || "" },
-    ...(chat?.messages.map((m) => ({ role: m.role, content: m.content })) ||
-      []),
+    {
+      role: "system",
+      content: chat.person.prompt || defaultPrompt(chat.person.name),
+    },
+    ...(chat.messages.map((m) => ({ role: m.role, content: m.content })) || []),
   ];
   const res = await fetch("https://api.openai.com/v1/chat/completions", {
     method: "POST",

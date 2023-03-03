@@ -4,13 +4,16 @@ import { useRouter } from "next/navigation";
 import type { FormEvent } from "react";
 import { useState } from "react";
 import { UserImage } from "~/component/UserImage";
+import { defaultPrompt } from "~/config";
 import type { Message } from "~/types";
+
 type Person = {
   name: string;
   image: string;
   id: string;
   prompt: string;
 };
+
 export const Messages = ({
   messages: startMessages,
   person,
@@ -71,7 +74,6 @@ export const Messages = ({
           ];
         });
       }
-      // Do the magic
     } catch (e) {
       console.log(e);
     }
@@ -80,18 +82,20 @@ export const Messages = ({
   };
   return (
     <>
-      <div className="relative my-3 h-full overflow-scroll">
-        {!messages.length && (
-          <div className="flex h-full items-center justify-center">
-            <div className=" flex flex-col items-center space-y-3">
-              <p>Prompt</p>
-              <p className="max-w-lg rounded-lg bg-base-300 p-3">
-                {person.prompt}
-              </p>
+      <div className="relative my-3 h-full overflow-y-auto ">
+        <div className="absolute bottom-0 flex h-full w-full flex-col">
+          {!messages.length && (
+            <div className="flex h-full items-center justify-center">
+              <div className=" flex w-full flex-col items-center space-y-3">
+                <p className="text-xl">Prompt</p>
+                <textarea
+                  className="min-h-[140px] w-full max-w-lg rounded-lg bg-base-300 p-3"
+                  value={person.prompt || defaultPrompt(person.name)}
+                  readOnly
+                />
+              </div>
             </div>
-          </div>
-        )}
-        <div className="absolute bottom-0 flex h-full w-full flex-col overflow-scroll ">
+          )}
           {messages.map((message, i) => {
             const isUser = message.role === "user";
             return (
