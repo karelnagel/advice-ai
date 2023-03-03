@@ -1,29 +1,34 @@
 import { Footer } from "./Footer";
 import { Header } from "./Header";
-import Image from "next/image";
 import { Login } from "./Login";
 
 export default function Landing() {
   return (
-    <main className=" relative flex min-h-full w-full flex-col">
+    <main className=" relative flex min-h-screen w-full flex-col">
       <Header />
-      <div
-        className="hero relative min-h-full"
-        style={{
-          backgroundImage: `url("/images/stock/photo-1507358522600-9f71e620c44e.jpg")`,
-        }}
-      >
-        <Image alt="hero" src="/hero.jpeg" className="" fill={true} />
-        <div className="hero-overlay bg-opacity-80"></div>
-        <div className="hero-content text-center text-neutral-content">
-          <div className="flex max-w-md flex-col items-center">
-            <h1 className="mb-5 text-5xl font-bold">Chat with celebs</h1>
-            <p className="mb-5">
-              Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-              excepturi exercitationem quasi. In deleniti eaque aut repudiandae
-              et a id nisi.
-            </p>
-            <Login />
+      <div className="m-auto flex w-full max-w-screen-lg flex-col-reverse justify-between py-10 md:flex-row">
+        <div className="col-span-2 flex flex-col items-center mx-3 justify-center space-y-6 md:space-y-10 py-8 text-center md:max-w-2xl md:items-start md:text-left">
+          <p className="text-4xl font-extrabold leading-[1.3] text-primary md:text-6xl">
+            Chat With Anyone You Want To
+          </p>
+          <p>
+            Use AI to get advice, have fun or just spend time with talking to AI
+            generated celebrities or other people.
+          </p>
+          <Login />
+        </div>
+        <div className=" flex items-center justify-center">
+          <div className="relative">
+            <div className="absolute top-0 h-full w-full bg-primary blur-xl"></div>
+
+            <video
+              className="relative h-72 rounded-lg md:h-96"
+              src="/video.mov"
+              autoPlay
+              loop
+              muted
+              disablePictureInPicture
+            />
           </div>
         </div>
       </div>
