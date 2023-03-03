@@ -1,9 +1,28 @@
-// @ts-check
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
+import pwa from 'next-pwa'
+const isDev = process.env.NODE_ENV !== "production";
 
-/**
- * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation.
- * This is especially useful for Docker builds.
- */
+const withPWA = pwa({
+  dest: 'public',
+  disable: isDev,
+
+  exclude: [
+    ({ asset }) => {
+      if (
+        asset.name.startsWith("server/") ||
+        asset.name.match(/^((app-|^)build-manifest\.json|react-loadable-manifest\.json)$/)
+      ) {
+        return true;
+      }
+      if (isDev && !asset.name.startsWith("static/runtime/")) {
+        return true;
+      }
+      return false;
+    }
+  ],
+});
+
 !process.env.SKIP_ENV_VALIDATION && (await import("./src/env.mjs"));
 
 /** @type {import("next").NextConfig} */
@@ -12,15 +31,5 @@ const config = {
   experimental: {
     appDir: true
   }
-  /**
-   * If you have the "experimental: { appDir: true }" setting enabled, then you
-   * must comment the below `i18n` config out.
-   *
-   * @see https://github.com/vercel/next.js/issues/41980
-   */
-  // i18n: {
-  //   locales: ["en"],
-  //   defaultLocale: "en",
-  // },
 };
-export default config;
+export default withPWA(config);
