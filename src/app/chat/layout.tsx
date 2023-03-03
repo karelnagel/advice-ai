@@ -24,16 +24,16 @@ export default async function Layout({ children }: { children: ReactNode }) {
   });
   return (
     <div className="grid h-screen w-screen grid-cols-3 md:grid-cols-4">
-      <div className="space-y-3 border-r p-3 hidden md:block">
+      <div className="hidden space-y-3 border-r p-3 md:block">
         <Top image={session.user.image} />
-          <Search />
+        <Search />
         <div className="space-y-3">
           {chats.map((chat) => {
             const lastMessage = chat.messages[0];
             const minAgo = minutesPassed(lastMessage?.createdAt);
             return (
               <Link
-                href={`/app/${chat.person.id}`}
+                href={`/chat/${chat.person.id}`}
                 key={chat.id}
                 className="flex items-center space-x-3"
               >

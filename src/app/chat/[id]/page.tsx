@@ -38,7 +38,7 @@ export default async function Chat({
         </div>
         <div className="space-x-2">
           {person.creatorId === session.user.id && (
-            <Link href={`/app/${id}/edit`}>Edit</Link>
+            <Link href={`/chat/${id}/edit`}>Edit</Link>
           )}
           <Delete id={id} />
         </div>

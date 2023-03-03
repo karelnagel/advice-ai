@@ -32,7 +32,7 @@ export const Search = () => {
       >
         {data?.persons?.map((person) => (
           <li key={person.id}>
-            <Link href={`/app/${person.id}`} className="flex">
+            <Link href={`/chat/${person.id}`} className="flex">
               <img
                 alt={person.image}
                 src={person.image}

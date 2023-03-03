@@ -4,11 +4,11 @@ import { signIn, useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 
-export const Login = ({ callback = "/app" }: { callback?: string }) => {
+export const Login = ({ callback = "/chat" }: { callback?: string }) => {
   const { data: session } = useSession();
   if (session)
     return (
-      <Link href="/app" className="btn">
+      <Link href="/chat" className="btn">
         Go to App
       </Link>
     );

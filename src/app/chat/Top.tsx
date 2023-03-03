@@ -23,12 +23,12 @@ export const Top = ({ image }: { image?: string | null }) => {
             </li>
           </ul>
         </div>
-        <Link href="/app" className="text-lg font-semibold">
+        <Link href="/chat" className="text-lg font-semibold">
           Messages
         </Link>
       </div>
       <div>
-        <Link href="/app/new">
+        <Link href="/chat/new">
           <NewIcon />
         </Link>
       </div>

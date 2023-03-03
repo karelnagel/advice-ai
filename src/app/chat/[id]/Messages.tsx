@@ -40,7 +40,7 @@ export const Messages = ({
     router.refresh();
     setInput("");
     try {
-      const res = await fetch(`/app/${person.id}/message`, {
+      const res = await fetch(`/chat/${person.id}/message`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

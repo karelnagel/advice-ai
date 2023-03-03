@@ -9,7 +9,7 @@ export const Delete = ({ id }: { id: string }) => {
   const del = async () => {
     await mutateAsync({ id });
     router.refresh();
-    router.push(`/app`);
+    router.push(`/chat`);
   };
   return <button onClick={() => void del()}>Restart</button>;
 };

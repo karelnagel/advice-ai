@@ -22,7 +22,7 @@ export const Edit = (props: {
     e.preventDefault();
     const person = await mutateAsync({ id: props.id, name, image, prompt });
 
-    router.push(`/app/${person.id}`);
+    router.push(`/chat/${person.id}`);
   };
   return (
     <form

@@ -17,7 +17,7 @@ export default function New() {
     e.preventDefault();
     const person = await mutateAsync({ name, image, prompt });
 
-    router.push(`/app/${person.id}`);
+    router.push(`/chat/${person.id}`);
   };
   return (
     <div className="col-span-3 flex  flex-col items-center justify-center space-y-3">

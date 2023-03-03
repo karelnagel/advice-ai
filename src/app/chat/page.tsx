@@ -14,7 +14,7 @@ export default async function Page() {
         <div className="grid w-96 grid-cols-2 gap-3">
           {people.map((p) => (
             <Link
-              href={`/app/${p.id}`}
+              href={`/chat/${p.id}`}
               key={p.id}
               className="flex items-center space-x-3 rounded-lg bg-base-300 p-2"
             >
@@ -24,7 +24,7 @@ export default async function Page() {
           ))}
         </div>
         <div className="divider">or</div>
-        <Link href="/app/new" className="btn-primary btn">
+        <Link href="/chat/new" className="btn-primary btn">
           Create New
         </Link>
       </div>
