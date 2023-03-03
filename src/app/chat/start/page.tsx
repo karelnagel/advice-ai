@@ -4,7 +4,7 @@ import { prisma } from "~/server/db";
 
 export default async function Page() {
   const people = await prisma.person.findMany({
-    where: { featured: true },
+    orderBy: { featured: "desc" },
     take: 6,
   });
   return (
