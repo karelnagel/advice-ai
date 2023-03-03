@@ -82,8 +82,8 @@ export const Messages = ({
   };
   return (
     <>
-      <div className="relative my-3 h-full ">
-        <div className="absolute top-0 flex h-full w-full flex-col-reverse overflow-y-auto">
+      <div className="relative my-3 h-full">
+        <div className="absolute top-0 flex h-full w-full flex-col-reverse overflow-y-auto px-3">
           {!messages.length && (
             <div className="flex h-full items-center justify-center">
               <div className=" flex w-full flex-col items-center space-y-3">
@@ -98,25 +98,52 @@ export const Messages = ({
           )}
           {[...messages].reverse().map((message, i) => {
             const isUser = message.role === "user";
+            const texts = message.content.match(
+              /([^\.!\?]+[\.!\?]+)|([^\.!\?]+$)/g
+            ) || [message.content];
+            console.log(texts);
             return (
               <div
                 key={i}
-                className={`chat ${isUser ? "chat-end" : "chat-start"}`}
+                className={`flex items-end space-x-2 ${
+                  isUser ? " ml-10 justify-end text-right" : " mr-10 "
+                }`}
               >
                 {!isUser && (
-                  <div className="chat-image avatar aspect-square h-8 md:h-10">
-                    <UserImage image={person.image} />
-                  </div>
+                  <UserImage image={person.image} className="h-6 md:h-8" />
                 )}
-                <div className="chat-header">
-                  {isUser ? "You" : person.name}
-                </div>
                 <div
-                  className={`chat-bubble ${
-                    isUser ? "chat-bubble-primary" : ""
+                  className={`flex flex-col space-y-1 ${
+                    isUser ? "items-end" : "items-start"
                   }`}
                 >
-                  {message.content}
+                  <div className="text-xs opacity-80">
+                    {isUser ? "You" : person.name}
+                  </div>
+                  {texts?.map((text, i) => {
+                    const big = "16px";
+                    const small = "7px";
+                    const isLast = i === texts.length - 1;
+                    const isFirst = i === 0;
+
+                    const lt = isUser ? big : isFirst ? big : small;
+                    const lb = isUser ? big : isLast ? big : small;
+
+                    const rt = isUser ? (isFirst ? big : small) : big;
+                    const rb = isUser ? (isLast ? big : small) : big;
+
+                    return (
+                      <div
+                        key={i}
+                        style={{ borderRadius: `${lt} ${rt} ${rb} ${lb}` }}
+                        className={`py-2 px-3 text-[16px] ${
+                          isUser ? "bg-primary" : "bg-base-300"
+                        }`}
+                      >
+                        {text}
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
             );
@@ -126,7 +153,7 @@ export const Messages = ({
 
       <form
         onSubmit={(e) => void submit(e)}
-        className="flex items-center space-x-3"
+        className="flex items-center space-x-3 p-3 pt-0"
       >
         <input
           type="text"

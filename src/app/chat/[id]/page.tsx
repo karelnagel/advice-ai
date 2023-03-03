@@ -27,8 +27,8 @@ export default async function Chat({
 
   if (!person) return <div>Person not found</div>;
   return (
-    <div className="col-span-3 flex flex-col space-x-3 p-3">
-      <div className="flex items-center justify-between">
+    <div className="col-span-3 flex flex-col space-x-3 pt-3">
+      <div className="flex items-center justify-between px-3">
         <div className="flex items-center space-x-3">
           <Link href="/chat" className="block text-xl md:hidden">
             <IoIosArrowBack />

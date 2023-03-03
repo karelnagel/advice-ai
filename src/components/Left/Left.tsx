@@ -32,7 +32,7 @@ export const Left = ({ chats }: { chats: Chat[] }) => {
                 <p>{chat.person.name}</p>
                 <div className="flex space-x-1 text-xs opacity-60">
                   <p className="text-xs line-clamp-1">{lastMessage?.content}</p>
-                  <p>•</p>
+                  {/* <p>•</p> */}
                   {/* <p className="whitespace-nowrap">
                     {minAgo ? `${minAgo} min ago` : "now"}
                   </p> */}

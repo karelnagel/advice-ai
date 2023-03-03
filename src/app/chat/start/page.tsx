@@ -9,7 +9,7 @@ export default async function Page() {
   });
   return (
     <div className="col-span-3 flex h-full w-full items-center justify-center">
-      <div className="flex flex-col space-y-6 text-center">
+      <div className="flex flex-col space-y-6 text-center px-2">
         <p className="text-2xl ">Start a New Conversation</p>
         <div className="grid w-96 grid-cols-2 gap-3">
           {people.map((p) => (
