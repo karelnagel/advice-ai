@@ -38,7 +38,6 @@ export const EditPerson = (props: {
         <label className="label">
           <span className="label-text">Image URL</span>
         </label>
-
         <input
           type="text"
           placeholder="Paste their image URL here"
@@ -53,7 +52,7 @@ export const EditPerson = (props: {
         </label>
         <textarea
           placeholder={defaultPrompt(name)}
-          className="textarea bg-base-200 min-h-[200px]"
+          className="textarea min-h-[200px] bg-base-200"
           value={prompt}
           onChange={(e) => setPrompt(e.target.value)}
         />

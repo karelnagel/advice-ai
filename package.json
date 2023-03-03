@@ -29,7 +29,8 @@
     "sharp": "^0.31.3",
     "sonner": "^0.1.5",
     "superjson": "^1.12.2",
-    "zod": "^3.20.6"
+    "zod": "^3.20.6",
+    "zustand": "^4.3.5"
   },
   "devDependencies": {
     "@types/eslint": "^8.21.1",

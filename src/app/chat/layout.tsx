@@ -5,8 +5,8 @@ import type { ReactNode } from "react";
 import { UserImage } from "~/components/UserImage";
 import { authOptions } from "~/server/auth";
 import { prisma } from "~/server/db";
-import { Search } from "./Search";
-import { Top } from "./Top";
+import { Search } from "./(index)/Search";
+import { Top } from "./(index)/Top";
 
 export default async function Layout({ children }: { children: ReactNode }) {
   const session = await getServerSession(authOptions);
@@ -18,7 +18,7 @@ export default async function Layout({ children }: { children: ReactNode }) {
     },
     include: {
       person: true,
-      messages: { orderBy: { createdAt: "desc" } },
+      messages: { orderBy: { createdAt: "desc" }, take: 1 },
     },
     orderBy: { createdAt: "desc" },
   });
