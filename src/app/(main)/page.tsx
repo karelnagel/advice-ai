@@ -5,10 +5,10 @@ import { Login } from "./Login";
 
 export default function Landing() {
   return (
-    <main className=" relative flex min-h-screen w-full flex-col">
+    <main className=" relative flex min-h-full w-full flex-col">
       <Header />
       <div
-        className="hero relative min-h-screen"
+        className="hero relative min-h-full"
         style={{
           backgroundImage: `url("/images/stock/photo-1507358522600-9f71e620c44e.jpg")`,
         }}

@@ -19,7 +19,7 @@ export const EditPerson = (props: {
   };
   return (
     <form
-      className="flex w-96 flex-col space-y-2"
+      className="flex w-96 flex-col space-y-2 px-2"
       onSubmit={(e) => void submit(e)}
     >
       <div className="form-control">

@@ -18,10 +18,10 @@ export default async function Layout({
   const session = await getServerSession(authOptions);
 
   return (
-    <html lang="en">
+    <html lang="en" className="h-full">
       <SessionProvider session={session}>
         <ClientProvider>
-          <body className="h-screen w-screen" style={inter.style}>
+          <body className="h-full w-screen" style={inter.style}>
             {children}
             <Toaster />
             <Pwa />

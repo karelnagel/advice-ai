@@ -22,7 +22,7 @@ export default async function Layout({ children }: { children: ReactNode }) {
   });
 
   return (
-    <div className="grid h-screen w-screen grid-cols-1 md:grid-cols-4">
+    <div className="grid h-full w-screen grid-cols-1 md:grid-cols-4">
       <Left chats={Chat.array().parse(chats)} />
       {children}
     </div>
