@@ -82,8 +82,8 @@ export const Messages = ({
   };
   return (
     <>
-      <div className="relative my-3 h-full overflow-y-auto ">
-        <div className="absolute bottom-0 flex h-full w-full flex-col">
+      <div className="relative my-3 h-full ">
+        <div className="absolute top-0 flex h-full w-full flex-col-reverse overflow-y-auto">
           {!messages.length && (
             <div className="flex h-full items-center justify-center">
               <div className=" flex w-full flex-col items-center space-y-3">
@@ -96,7 +96,7 @@ export const Messages = ({
               </div>
             </div>
           )}
-          {messages.map((message, i) => {
+          {[...messages].reverse().map((message, i) => {
             const isUser = message.role === "user";
             return (
               <div
