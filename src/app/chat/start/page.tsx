@@ -4,12 +4,12 @@ import { prisma } from "~/server/db";
 
 export default async function Page() {
   const people = await prisma.person.findMany({
-    where: {},
+    where: { featured: true },
     take: 6,
   });
   return (
     <div className="col-span-3 flex h-full w-full items-center justify-center">
-      <div className="flex flex-col space-y-6 text-center px-2">
+      <div className="flex flex-col space-y-6 px-2 text-center">
         <p className="text-2xl ">Start a New Conversation</p>
         <div className="grid w-96 grid-cols-2 gap-3">
           {people.map((p) => (
