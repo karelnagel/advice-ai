@@ -1,28 +1,20 @@
 "use client";
 
-import type { Person } from "@prisma/client";
-import axios from "axios";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { trpc } from "../ClientProvider";
 
 export const Search = () => {
   const [input, setInput] = useState("");
-  const [people, setPeople] = useState<Person[]>();
+  const { data, mutate } = trpc.persons.search.useMutation();
   useEffect(() => {
-    const search = async () => {
-      if (!input) return;
-      const res = await axios.get<Person[]>("/app/search", {
-        params: { search: input },
-      });
-      setPeople(res.data);
-    };
     const timeout = setTimeout(() => {
-      void search();
+      mutate({ search: input });
     }, 500);
     return () => {
       clearTimeout(timeout);
     };
-  }, [input]);
+  }, [input, mutate]);
 
   return (
     <div className="dropdown w-full">
@@ -38,7 +30,7 @@ export const Search = () => {
         tabIndex={0}
         className="dropdown-content menu rounded-box w-full bg-base-300 p-2 shadow"
       >
-        {people?.map((person) => (
+        {data?.persons?.map((person) => (
           <li key={person.id}>
             <Link href={`/app/${person.id}`} className="flex">
               <img

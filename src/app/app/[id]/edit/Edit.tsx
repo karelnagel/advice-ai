@@ -1,10 +1,9 @@
 "use client";
 
-import type { Person } from "@prisma/client";
-import axios from "axios";
 import { useRouter } from "next/navigation";
 import type { FormEvent } from "react";
 import { useState } from "react";
+import { trpc } from "~/app/ClientProvider";
 
 export const Edit = (props: {
   id: string;
@@ -17,15 +16,11 @@ export const Edit = (props: {
   const [name, setName] = useState(props.name);
   const [image, setImage] = useState(props.image);
   const [prompt, setPrompt] = useState(props.prompt);
+  const { mutateAsync } = trpc.persons.edit.useMutation();
+
   const submit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!name || !image || !prompt) return;
-    const res = await axios.post(`/app/${props.id}/edit/edit`, {
-      name,
-      image,
-      prompt,
-    });
-    const person = res.data as Person;
+    const person = await mutateAsync({ id: props.id, name, image, prompt });
 
     router.push(`/app/${person.id}`);
   };

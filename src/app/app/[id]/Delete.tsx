@@ -1,12 +1,14 @@
 "use client";
 
-import axios from "axios";
 import { useRouter } from "next/navigation";
+import { trpc } from "~/app/ClientProvider";
 
 export const Delete = ({ id }: { id: string }) => {
   const router = useRouter();
+  const { mutateAsync } = trpc.chat.delete.useMutation();
   const del = async () => {
-    await axios.delete(`/app/${id}/delete`, { params: { id } });
+    await mutateAsync({ id });
+    router.refresh();
     router.push(`/app`);
   };
   return <button onClick={() => void del()}>Restart</button>;

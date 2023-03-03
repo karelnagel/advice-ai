@@ -1,28 +1,24 @@
 "use client";
 
-import type { Person } from "@prisma/client";
-import axios from "axios";
 import { useRouter } from "next/navigation";
 import type { FormEvent } from "react";
 import { useState } from "react";
+import { trpc } from "~/app/ClientProvider";
 
 export default function New() {
   const router = useRouter();
-  const submit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (!name || !image || !prompt) return;
-    const res = await axios.post("/app/new/add", {
-      name,
-      image,
-      prompt,
-    });
-    const person = res.data as Person;
 
-    router.push(`/app/${person.id}`);
-  };
   const [name, setName] = useState("");
   const [image, setImage] = useState("");
   const [prompt, setPrompt] = useState("");
+
+  const { mutateAsync } = trpc.persons.new.useMutation();
+  const submit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const person = await mutateAsync({ name, image, prompt });
+
+    router.push(`/app/${person.id}`);
+  };
   return (
     <div className="col-span-3 flex  flex-col items-center justify-center space-y-3">
       <p className="text-2xl">Create new person</p>
