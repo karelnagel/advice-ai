@@ -1,42 +1,68 @@
+import Link from "next/link";
+
 export const Footer = () => {
   return (
     <div className="bg-base-200">
-      <footer className="footer m-auto max-w-screen-lg bg-base-200 py-10 text-base-content">
-        <div>
-          <span className="footer-title">Services</span>
-          <a className="link-hover link">Branding</a>
-          <a className="link-hover link">Design</a>
-          <a className="link-hover link">Marketing</a>
-          <a className="link-hover link">Advertisement</a>
+      <footer className="mx-4 md:m-auto grid max-w-screen-lg grid-cols-2 gap-6 py-10 md:grid-cols-8">
+        <div className="col-span-2 flex items-center text-4xl font-bold justify-center">
+          GPT Friend
         </div>
-        <div>
-          <span className="footer-title">Company</span>
-          <a className="link-hover link">About us</a>
-          <a className="link-hover link">Contact</a>
-          <a className="link-hover link">Jobs</a>
-          <a className="link-hover link">Press kit</a>
+        <div className="grid gap-1">
+          <p className="footer-title">About</p>
+          <Link
+            target={"_blank"}
+            href="https://github.com/karelnagel/gpt-friend"
+            className="link-hover link"
+          >
+            Github
+          </Link>
+          <Link
+            href="https://twitter.com/karelETH"
+            target={"_blank"}
+            className="link-hover link"
+          >
+            Twitter
+          </Link>
+          <Link
+            href="https://linkedin.com/in/karelnagel"
+            target={"_blank"}
+            className="link-hover link"
+          >
+            LinkedIn
+          </Link>
         </div>
-        <div>
-          <span className="footer-title">Legal</span>
-          <a className="link-hover link">Terms of use</a>
-          <a className="link-hover link">Privacy policy</a>
-          <a className="link-hover link">Cookie policy</a>
+        <div className="grid gap-1">
+          <p className="footer-title">Legal</p>
+          <Link href="/" className="link-hover link">
+            Terms of use
+          </Link>
+          <Link href="/" className="link-hover link">
+            Privacy policy
+          </Link>
+          <Link href="/" className="link-hover link">
+            Cookie policy
+          </Link>
         </div>
-        <div>
+        <div className="col-span-2">
           <span className="footer-title">Newsletter</span>
-          <div className="form-control w-80">
+          <div className="form-control w-full">
             <label className="label">
-              <span className="label-text">Enter your email address</span>
+              <span className="label-text">
+                Enter your email to keep up with updates
+              </span>
             </label>
-            <div className="relative">
+            <div className="flex w-full space-x-1">
               <input
                 type="text"
                 placeholder="username@site.com"
-                className="input-bordered input w-full pr-16"
+                className="input-bordered input w-full "
               />
-              <button className="btn-primary btn absolute top-0 right-0 rounded-l-none">
+              <Link
+                href="mailto:nagelkarel@gmail.com"
+                className="btn-primary btn "
+              >
                 Subscribe
-              </button>
+              </Link>
             </div>
           </div>
         </div>
