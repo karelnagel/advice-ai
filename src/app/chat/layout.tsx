@@ -2,7 +2,7 @@ import { getServerSession } from "next-auth";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import type { ReactNode } from "react";
-import { UserImage } from "~/component/UserImage";
+import { UserImage } from "~/components/UserImage";
 import { authOptions } from "~/server/auth";
 import { prisma } from "~/server/db";
 import { Search } from "./Search";

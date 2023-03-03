@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import type { FormEvent } from "react";
 import { useState } from "react";
-import { UserImage } from "~/component/UserImage";
+import { UserImage } from "~/components/UserImage";
 import { defaultPrompt } from "~/config";
 import type { Message } from "~/types";
 

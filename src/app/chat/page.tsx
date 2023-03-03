@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { UserImage } from "~/component/UserImage";
+import { UserImage } from "~/components/UserImage";
 import { prisma } from "~/server/db";
 
 export default async function Page() {

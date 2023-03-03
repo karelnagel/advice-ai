@@ -1,8 +1,7 @@
 "use client";
 import { signOut } from "next-auth/react";
 import Link from "next/link";
-import { IoIosArrowForward } from "react-icons/io";
-import { UserImage } from "~/component/UserImage";
+import { UserImage } from "~/components/UserImage";
 
 export const Top = ({ image }: { image?: string | null }) => {
   return (

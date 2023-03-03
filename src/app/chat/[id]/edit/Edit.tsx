@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { trpc } from "~/app/ClientProvider";
-import { EditPerson } from "~/component/EditPerson";
+import { EditPerson } from "~/components/EditPerson";
 
 export const Edit = (props: {
   id: string;

@@ -1,11 +1,18 @@
 "use client";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { createTRPCProxyClient, httpBatchLink, loggerLink } from "@trpc/client";
+import {
+  createTRPCProxyClient,
+  httpBatchLink,
+  loggerLink,
+  type TRPCLink,
+} from "@trpc/client";
 import { createTRPCReact } from "@trpc/react-query";
 import { useState } from "react";
 import type { AppRouter } from "../server/api/root";
 import superjson from "superjson";
+import { observable } from "@trpc/server/observable";
+import { toast } from "sonner";
 
 const getBaseUrl = () => {
   if (typeof window !== "undefined") return ""; // browser should use relative url
@@ -23,10 +30,27 @@ export const trpc = createTRPCReact<AppRouter>({
   },
 });
 
+export const customLink: TRPCLink<AppRouter> = () => {
+  return ({ next, op }) => {
+    return observable((observer) => {
+      const unsubscribe = next(op).subscribe({
+        next: (value) => observer.next(value),
+        error(err) {
+          observer.error(err);
+          toast.error(err.message || "Error");
+        },
+        complete: () => observer.complete(),
+      });
+      return unsubscribe;
+    });
+  };
+};
+
 export const trpcClient = createTRPCProxyClient<AppRouter>({
   transformer: superjson,
 
   links: [
+    customLink,
     loggerLink({
       enabled: () => true,
     }),
@@ -42,6 +66,7 @@ export function ClientProvider(props: { children: React.ReactNode }) {
     trpc.createClient({
       transformer: superjson,
       links: [
+        customLink,
         loggerLink({
           enabled: () => true,
         }),

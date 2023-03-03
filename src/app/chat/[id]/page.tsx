@@ -1,6 +1,6 @@
 import { getServerSession } from "next-auth";
 import Link from "next/link";
-import { UserImage } from "~/component/UserImage";
+import { UserImage } from "~/components/UserImage";
 import { authOptions } from "~/server/auth";
 import { prisma } from "~/server/db";
 import { Delete } from "./Delete";
