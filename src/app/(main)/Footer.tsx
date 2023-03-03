@@ -3,8 +3,8 @@ import Link from "next/link";
 export const Footer = () => {
   return (
     <div className="bg-base-200">
-      <footer className="mx-4 md:m-auto grid max-w-screen-lg grid-cols-2 gap-6 py-10 md:grid-cols-8">
-        <div className="col-span-2 flex items-center text-4xl font-bold justify-center">
+      <footer className="mx-4 grid  max-w-screen-lg grid-cols-2 gap-6 py-10 md:m-auto md:grid-cols-6">
+        <div className="col-span-2 flex items-center justify-center text-4xl font-bold">
           GPT Friend
         </div>
         <div className="grid gap-1">
@@ -45,17 +45,17 @@ export const Footer = () => {
         </div>
         <div className="col-span-2">
           <span className="footer-title">Newsletter</span>
-          <div className="form-control w-full">
+          <div className="form-control ">
             <label className="label">
               <span className="label-text">
                 Enter your email to keep up with updates
               </span>
             </label>
-            <div className="flex w-full space-x-1">
+            <div className="flex space-x-1">
               <input
                 type="text"
                 placeholder="username@site.com"
-                className="input-bordered input w-full "
+                className="input-bordered input"
               />
               <Link
                 href="mailto:nagelkarel@gmail.com"
