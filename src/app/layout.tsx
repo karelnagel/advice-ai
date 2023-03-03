@@ -3,6 +3,7 @@ import "./globals.css";
 import SessionProvider from "./SessionProvider";
 import { Inter } from "next/font/google";
 import { authOptions } from "~/server/auth";
+import { ClientProvider } from "./ClientProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,9 +17,11 @@ export default async function Layout({
   return (
     <html lang="en">
       <SessionProvider session={session}>
-        <body className="h-screen w-screen" style={inter.style}>
-          {children}
-        </body>
+        <ClientProvider>
+          <body className="h-screen w-screen" style={inter.style}>
+            {children}
+          </body>
+        </ClientProvider>
       </SessionProvider>
     </html>
   );
